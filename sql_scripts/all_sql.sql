@@ -1,14 +1,14 @@
 CREATE TABLE [Photo] (
   [BoxID] bigint,
-  [FileName] <type>,
+  [FileName] varchar(500),
   PRIMARY KEY ([BoxID])
 );
 
 CREATE TABLE [Burial_Photo] (
   [BoxID] bigint,
-  [Location] <type>,
-  [ExcavationYear] <type>,
-  [BurialNumber] <type>,
+  [Location] nvarchar(13),
+  [ExcavationYear] smallint,
+  [BurialNumber] smallint,
   [IsCoverPhoto] bit,
   CONSTRAINT [FK_Burial_Photo.Location]
     FOREIGN KEY ([Location])
@@ -18,7 +18,7 @@ CREATE TABLE [Burial_Photo] (
 CREATE INDEX [CPK] ON  [Burial_Photo] ([BoxID], [Location], [ExcavationYear], [BurialNumber]);
 
 CREATE TABLE [Burial ] (
-  [Location] <type>,
+  [Location] nvarchar(13),
   [ExcavationYear] smallint,
   [BurialNumber] smallint,
   [HillDesignation] varchar(10),
@@ -104,21 +104,21 @@ CREATE TABLE [TextilePlyDirection] (
 
 CREATE TABLE [Textile_TextileStructure] (
   [TextileID] int,
-  [BurialNumber] <type>,
+  [BurialNumber] smallint,
   [TextileStructure] varchar(23)
 );
 
 CREATE INDEX [CPK] ON  [Textile_TextileStructure] ([TextileID], [TextileStructure]);
 
 CREATE TABLE [Excavation] (
-  [Location] <type>,
+  [Location] nvarchar(13),
   [Year] smallint,
   [SourceInformation] varchar(200),
   [Notes] varchar(1000)
 );
 
 CREATE TABLE [Artifact_Photo] (
-  [ArtifactID] <type>,
+  [ArtifactID] varchar(20),
   [BoxID] bigint,
   [IsCoverPhoto] bit
 );
@@ -131,7 +131,7 @@ CREATE TABLE [TextileManipulation] (
 );
 
 CREATE TABLE [Material_Artifact] (
-  [ArtifactID] <type>,
+  [ArtifactID] varchar(20),
   [Material] <type>
 );
 
@@ -146,7 +146,7 @@ CREATE TABLE [TextileDimension] (
 CREATE TABLE [Textile_TextileDimension] (
   [TextileID] int,
   [DimensionID] int,
-  [BurialNumber] <type>,
+  [BurialNumber] smallint,
   [CentimetersLength] numeric(5,2),
   CONSTRAINT [FK_Textile_TextileDimension.DimensionID]
     FOREIGN KEY ([DimensionID])
@@ -157,15 +157,15 @@ CREATE INDEX [CPK] ON  [Textile_TextileDimension] ([TextileID], [DimensionID]);
 
 CREATE TABLE [Textile] (
   [TextileID] int,
-  [BurialNumber] <type>,
+  [BurialNumber] smallint,
   [ExcavationYear] <type>,
-  [Location] <type>,
+  [Location] nvarchar(13),
   [TextileReferenceNumber] varchar(6),
-  [AnalysisType] lookup table,
+  [AnalysisType] <type>,
   [AnalysisDate] date,
   [SampleTakenDate] date,
   [Description] varchar(1000),
-  [AnalysisBy] <type>,
+  [AnalysisBy] varchar(20),
   PRIMARY KEY ([TextileID])
 );
 
@@ -203,7 +203,7 @@ CREATE TABLE [Crania] (
 CREATE TABLE [Textile_TextileFunction] (
   [TextileID] int,
   [TextileFunction] varchar(19),
-  [BurialNumber] <type>,
+  [BurialNumber] smallint,
   [Locale] <type>
 );
 
@@ -211,7 +211,7 @@ CREATE INDEX [CPK] ON  [Textile_TextileFunction] ([TextileID], [TextileFunction]
 
 CREATE TABLE [PDF] (
   [BoxID] bigint,
-  [FileName] <type>,
+  [FileName] varchar(500),
   PRIMARY KEY ([BoxID])
 );
 
@@ -245,13 +245,13 @@ CREATE INDEX [Key] ON  [C14] ([C14ID], [Contents]);
 
 CREATE TABLE [Artifact] (
   [ArtifactID] varchar(20),
-  [Location] <type>,
-  [Position] <type>,
-  [MetersNorthSouth] <type>,
-  [NorthOrSouth] <type>,
-  [MetersEastWest] <type>,
-  [EastOrWest] <type>,
-  [BurialNumber] <type>,
+  [Location] nvarchar(13),
+  [Position] varchar(50,
+  [MetersNorthSouth] smallint,
+  [NorthOrSouth] varchar(1),
+  [MetersEastWest] smallint,
+  [EastOrWest] varchar(1),
+  [BurialNumber] smallint,
   [ExcavationYear] <type>,
   [Title] varchar(100),
   [Description] varchar(MAX),
@@ -320,14 +320,14 @@ CREATE TABLE [TextileFunction] (
 
 CREATE TABLE [Person_Textile] (
   [PersonID] int,
-  [TextileID] <type>
+  [TextileID] int
 );
 
 CREATE INDEX [CPK] ON  [Person_Textile] ([PersonID], [TextileID]);
 
 CREATE TABLE [Textile_TextileDecoration] (
   [TextileID] int,
-  [BurialNumber] <type>,
+  [BurialNumber] smallint,
   [TextileDecoration] varchar(50)
 );
 
@@ -347,20 +347,20 @@ CREATE INDEX [CPK] ON  [PDF_Textile] ([TextileID], [BoxID]);
 
 CREATE TABLE [Person] (
   [PersonID] int,
-  [FirstName] <type>,
-  [LastName] <type>,
-  [Notes] <type>,
+  [FirstName] varchar(50),
+  [LastName] varchar(50),
+  [Notes] varchar(500),
   PRIMARY KEY ([PersonID])
 );
 
 CREATE TABLE [YarnManipulation] (
   [TextileID] int,
   [YarnManipulationID] int,
-  [BurialNumber] <type>,
+  [BurialNumber] smallint,
   [Component] <type>,
   [Material] <type>,
   [Manipulation] <type>,
-  [PlyDirection] lookup,
+  [PlyDirection] <type>,
   [TwistDirection] <type>,
   [SpinAngle] <type>,
   [ThreadCount] smallint,
@@ -380,7 +380,7 @@ CREATE TABLE [TextileSpinAngle] (
 );
 
 CREATE TABLE [Burial_PDF] (
-  [Location] <type>,
+  [Location] nvarchar(13),
   [ExcavationYear] smallint,
   [BurialNumber] smallint,
   [BoxID] bigint
@@ -390,7 +390,7 @@ CREATE INDEX [CPK] ON  [Burial_PDF] ([Location], [ExcavationYear], [BurialNumber
 
 CREATE TABLE [Textile_TextileColor] (
   [TextileID] int,
-  [BurialNumber] <type>,
+  [BurialNumber] smallint,
   [TextileColor] varchar(6)
 );
 
@@ -407,9 +407,9 @@ CREATE TABLE [BiologicalSample] (
   [PreviouslySampled] varchar(50),
   [Notes] varchar(1000),
   [BiologicalSampleID ] varchar(50),
-  [Location] <type>,
-  [ExcavationYear] <type>,
-  [BurialNumber] <type>
+  [Location] nvarchar(13),
+  [ExcavationYear] smallint,
+  [BurialNumber] smallint
 );
 
 CREATE TABLE [TextileThickness] (
@@ -438,7 +438,7 @@ CREATE TABLE [Location] (
 
 CREATE TABLE [Textile_Photo] (
   [BoxID] bigint,
-  [TextileID] <type>,
+  [TextileID] int,
   [IsCoverPhoto] bit
 );
 
