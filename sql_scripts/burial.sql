@@ -14,7 +14,7 @@ CREATE TABLE [Burial ] (
   [ExcavationDay] tinyint,
   [ExcavationMonth] tinyint,
   [BodyPreservationLevel] varchar(50),
-  [WrappingLevel] varchar(50),
+  [WrappingLevel] varchar(70),
   [AdultSubadult] bit,
   [AgeGroup] lookup table,
   [EstimatedAgeAtDeath] Varchar(100),
