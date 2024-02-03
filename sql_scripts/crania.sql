@@ -21,11 +21,6 @@ CREATE TABLE [Crania] (
   [CalcBizygomaticDiameter] decimal(5,2),
   [CalcNasionProsthionHeight] decimal(5,2),
   [CraniaCalcSum] decimal(5,2),
-  [MetersNorthSouth] smallint,
-  [NorthOrSouth] varchar(1),
-  [MetersEastWest] smallint,
-  [EastOrWest] varchar(1),
-  [Quadrant] nvarchar(2),
   PRIMARY KEY ([CraniaID])
 );
 
