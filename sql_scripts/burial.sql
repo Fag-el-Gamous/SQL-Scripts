@@ -19,9 +19,9 @@ CREATE TABLE [Burial ] (
   [AgeGroup] lookup table,
   [EstimatedAgeAtDeath] Varchar(100),
   [Sex] varchar(1),
-  [HairColor] varchar(1),
+  [HairColor] varchar(10),
   [HairDescription] Varchar(100),
-  [HasSamples] bit,
+  [HasSamples] boolean,
   [HasFaceBundle] bit,
   [HasGraveGoods] bit,
   [GraveGoodsDescription] nvarchar(2000),
@@ -29,7 +29,6 @@ CREATE TABLE [Burial ] (
   [BurialNotes] nvarchar(2000),
   [BodyExaminationDate] Date,
   [BodyPreservationIndex] tinyint,
-  [BodyObservations] nvarchar(1000),
   [RobustCrania] nvarchar(6),
   [SupraorbitalRidgesCrania] nvarchar(6),
   [OrbitEdgeCrania] nvarchar(6),
@@ -40,7 +39,7 @@ CREATE TABLE [Burial ] (
   [SphenoOccipitalSynchondrosisCrania] nvarchar(10),
   [LamboidSutureCrania] nvarchar(10),
   [SquamousSutureCrania] nvarchar(10),
-  [ToothAttrition] tinyint,
+  [ToothAttrition] varchar(5),
   [ToothEruptionDescription] nvarchar(200),
   [ToothEruptionAgeEstimate] nvarchar(60),
   [VentralArcPelvis] nvarchar(3),
@@ -60,7 +59,8 @@ CREATE TABLE [Burial ] (
   [EstimateStature] <type>,
   [EstimateSex] <type>,
   [Osteophytosis] Varchar (100),
-  [CariesPeriodontalDisease] Varchar (100)
+  [CariesPeriodontalDisease] Varchar (100),
+  [BodyAnalysisNotes] varchar(2000)
 );
 
 CREATE INDEX [CPK] ON  [Burial ] ([Location], [ExcavationYear], [BurialNumber]);
