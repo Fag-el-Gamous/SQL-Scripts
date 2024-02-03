@@ -1,8 +1,9 @@
 CREATE TABLE [Textile] (
   [TextileID] int,
-  [BurialNumber] smallint,
-  [ExcavationYear] <type>,
-  [Location] nvarchar(13),
+  [BurialNumber] smallint FOREIGN KEY REFERENCES Burial(BurialNumber),
+  [ExcavationYear] smallint FOREIGN KEY REFERENCES Burial(ExcavationYear),
+  [Location] nvarchar(13) FOREIGN KEY REFERENCES Location(Location),
+  FOREIGN KEY ([Location]) REFERENCES Burial(Location),
   [TextileReferenceNumber] varchar(6),
   [AnalysisType] <type>,
   [AnalysisDate] date,

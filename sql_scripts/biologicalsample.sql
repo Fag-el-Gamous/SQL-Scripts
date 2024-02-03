@@ -9,7 +9,7 @@ CREATE TABLE [BiologicalSample] (
   [PreviouslySampled] varchar(50),
   [Notes] varchar(1000),
   [BiologicalSampleID ] varchar(50),
-  [Location] nvarchar(13),
-  [ExcavationYear] smallint,
-  [BurialNumber] smallint
+  [Location] nvarchar(13) FOREIGN KEY REFERENCES Burial(Location),
+  [ExcavationYear] smallint FOREIGN KEY REFERENCES Burial(ExcavationYear),
+  [BurialNumber] smallint FOREIGN KEY REFERENCES Burial(BurialNumber)
 );

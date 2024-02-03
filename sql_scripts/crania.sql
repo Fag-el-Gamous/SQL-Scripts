@@ -1,8 +1,8 @@
 CREATE TABLE [Crania] (
   [CraniaID] int,
-  [Location] nvarchar(13),
-  [ExcavationYear] smallint,
-  [BurialNumber] smallint,
+  [Location] nvarchar(13) FOREIGN KEY REFERENCES Burial(Location),
+  [ExcavationYear] smallint FOREIGN KEY REFERENCES Burial(ExcavationYear),
+  [BurialNumber] smallint FOREIGN KEY REFERENCES Burial(BurialNumber),
   [MaxCraniaLength] decimal(5,2),
   [MaxCraniaBreadth] decimal(5,2),
   [BasionBregmaHeight] decimal(5,2),
