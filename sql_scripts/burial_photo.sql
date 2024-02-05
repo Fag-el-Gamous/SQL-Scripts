@@ -1,12 +1,9 @@
-CREATE TABLE [Burial_Photo] (
-  [BoxID] bigint,
-  [Location] nvarchar(13),
-  [ExcavationYear] smallint,
-  [BurialNumber] smallint,
-  [IsCoverPhoto] bit,
-  CONSTRAINT [FK_Burial_Photo.Location]
-    FOREIGN KEY ([Location])
-      REFERENCES [Photo]([FileName])
+CREATE TABLE [dbo].[Burial_Photo] (
+    [BoxID]          BIGINT        NOT NULL,
+    [Location]       NVARCHAR (20) NOT NULL,
+    [ExcavationYear] SMALLINT      NOT NULL,
+    [BurialNumber]   SMALLINT      NOT NULL,
+    [IsCoverPhoto]   BIT           NULL,
+    CONSTRAINT [PK_Burial_Photo] PRIMARY KEY CLUSTERED ([BoxID] ASC, [Location] ASC, [ExcavationYear] ASC, [BurialNumber] ASC)
 );
 
-CREATE INDEX [CPK] ON  [Burial_Photo] ([BoxID], [Location], [ExcavationYear], [BurialNumber]);

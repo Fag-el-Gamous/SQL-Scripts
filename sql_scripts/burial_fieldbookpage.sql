@@ -1,12 +1,9 @@
-CREATE TABLE [Burial_FieldbookPage] (
-  [Location] <type>,
-  [ExcavationYear] <type>,
-  [BurialNumber] <type>,
-  [FieldBookID] <type>,
-  [PDFPageNumber] <type>,
-  CONSTRAINT [FK_Burial_FieldbookPage.PDFPageNumber]
-    FOREIGN KEY ([PDFPageNumber])
-      REFERENCES [Burial ]([Location])
+CREATE TABLE [dbo].[Burial_FieldbookPage] (
+    [Location]       VARCHAR (20) NOT NULL,
+    [ExcavationYear] SMALLINT     NOT NULL,
+    [BurialNumber]   SMALLINT     NOT NULL,
+    [FieldBookID]    SMALLINT     NOT NULL,
+    [PDFPageNumber]  SMALLINT     NOT NULL,
+    CONSTRAINT [PK_Burial_FieldbookPage] PRIMARY KEY CLUSTERED ([Location] ASC, [BurialNumber] ASC, [FieldBookID] ASC, [PDFPageNumber] ASC, [ExcavationYear] ASC)
 );
 
-CREATE INDEX [CPK] ON  [Burial_FieldbookPage] ([Location], [ExcavationYear], [BurialNumber], [FieldBookID], [PDFPageNumber]);

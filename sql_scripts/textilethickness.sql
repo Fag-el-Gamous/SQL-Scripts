@@ -1,4 +1,5 @@
-CREATE TABLE [TextileThickness] (
-  [TextileThickness] varchar(21),
-  PRIMARY KEY ([TextileThickness])
+CREATE TABLE [dbo].[TextileThickness] (
+    [TextileThickness] VARCHAR (21) NOT NULL,
+    CONSTRAINT [PK_TextileThickness] PRIMARY KEY CLUSTERED ([TextileThickness] ASC)
 );
+

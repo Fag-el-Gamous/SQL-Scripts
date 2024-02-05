@@ -1,4 +1,4 @@
-CREATE TABLE [TextileSpinAngle] (
-  [TextileSpinAngle] varchar(11),
-  PRIMARY KEY ([TextileSpinAngle])
+CREATE TABLE [dbo].[TextileSpinAngle] (
+    [TextileSpinAngle] VARCHAR (11) NOT NULL,
+    CONSTRAINT [PK_TextileSpinAngle] PRIMARY KEY CLUSTERED ([TextileSpinAngle] ASC)
 );

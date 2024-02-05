@@ -1,4 +1,5 @@
-CREATE TABLE [TextileColor] (
-  [TextileColor] varchar(6),
-  PRIMARY KEY ([TextileColor])
+CREATE TABLE [dbo].[TextileColor] (
+    [TextileColor] VARCHAR (6) NOT NULL,
+    CONSTRAINT [PK_TextileColor] PRIMARY KEY CLUSTERED ([TextileColor] ASC)
 );
+

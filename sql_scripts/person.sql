@@ -1,7 +1,8 @@
-CREATE TABLE [Person] (
-  [PersonID] int,
-  [FirstName] varchar(50),
-  [LastName] varchar(50),
-  [Notes] varchar(500),
-  PRIMARY KEY ([PersonID])
+CREATE TABLE [dbo].[Person] (
+    [PersonID]  INT           NOT NULL,
+    [FirstName] VARCHAR (50)  NULL,
+    [LastName]  VARCHAR (50)  NULL,
+    [Notes]     VARCHAR (500) NULL,
+    CONSTRAINT [PK_Person] PRIMARY KEY CLUSTERED ([PersonID] ASC)
 );
+

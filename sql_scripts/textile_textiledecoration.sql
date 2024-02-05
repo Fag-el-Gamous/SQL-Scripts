@@ -1,7 +1,7 @@
-CREATE TABLE [Textile_TextileDecoration] (
-  [TextileID] int,
-  [BurialNumber] smallint,
-  [TextileDecoration] varchar(50)
+CREATE TABLE [dbo].[Textile_TextileDecoration] (
+    [TextileID]         INT          NOT NULL,
+    [BurialNumber]      SMALLINT     NULL,
+    [TextileDecoration] VARCHAR (50) NOT NULL,
+    CONSTRAINT [PK_Textile_TextileDecoration] PRIMARY KEY CLUSTERED ([TextileID] ASC, [TextileDecoration] ASC)
 );
 
-CREATE INDEX [CPK] ON  [Textile_TextileDecoration] ([TextileID], [TextileDecoration]);

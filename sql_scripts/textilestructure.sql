@@ -1,4 +1,5 @@
-CREATE TABLE [TextileStructure] (
-  [TextileStructure] varchar(23),
-  PRIMARY KEY ([TextileStructure])
+CREATE TABLE [dbo].[TextileStructure] (
+    [TextileStructure] VARCHAR (23) NOT NULL,
+    CONSTRAINT [PK_TextileStructure] PRIMARY KEY CLUSTERED ([TextileStructure] ASC)
 );
+

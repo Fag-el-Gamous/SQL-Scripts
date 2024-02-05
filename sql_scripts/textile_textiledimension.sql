@@ -1,11 +1,8 @@
-CREATE TABLE [Textile_TextileDimension] (
-  [TextileID] int,
-  [DimensionID] int,
-  [BurialNumber] smallint,
-  [CentimetersLength] numeric(5,2),
-  CONSTRAINT [FK_Textile_TextileDimension.DimensionID]
-    FOREIGN KEY ([DimensionID])
-      REFERENCES [TextileDimension]([DimensionID])
+CREATE TABLE [dbo].[Textile_TextileDimension] (
+    [TextileID]         INT            NOT NULL,
+    [DimensionID]       INT            NOT NULL,
+    [BurialNumber]      SMALLINT       NULL,
+    [CentimetersLength] NUMERIC (5, 2) NULL,
+    CONSTRAINT [PK_Textile_TextileDimension] PRIMARY KEY CLUSTERED ([TextileID] ASC, [DimensionID] ASC)
 );
 
-CREATE INDEX [CPK] ON  [Textile_TextileDimension] ([TextileID], [DimensionID]);

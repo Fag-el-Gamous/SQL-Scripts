@@ -1,7 +1,7 @@
-CREATE TABLE [Textile_Photo] (
-  [BoxID] bigint,
-  [TextileID] int,
-  [IsCoverPhoto] bit
+CREATE TABLE [dbo].[Textile_Photo] (
+    [BoxID]        BIGINT NOT NULL,
+    [TextileID]    INT    NOT NULL,
+    [IsCoverPhoto] BIT    NULL,
+    CONSTRAINT [PK_Textile_Photo] PRIMARY KEY CLUSTERED ([BoxID] ASC, [TextileID] ASC)
 );
 
-CREATE INDEX [CPK] ON  [Textile_Photo] ([BoxID], [TextileID]);

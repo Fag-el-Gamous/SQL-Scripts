@@ -1,6 +1,6 @@
-CREATE TABLE [Material_Artifact] (
-  [ArtifactID] varchar(20),
-  [Material] varchar(50)
+CREATE TABLE [dbo].[Material_Artifact] (
+    [ArtifactID] VARCHAR (20) NOT NULL,
+    [Material]   VARCHAR (50) NOT NULL,
+    CONSTRAINT [PK_Material_Artifact] PRIMARY KEY CLUSTERED ([ArtifactID] ASC, [Material] ASC)
 );
 
-CREATE INDEX [CPK] ON  [Material_Artifact] ([ArtifactID], [Material]);

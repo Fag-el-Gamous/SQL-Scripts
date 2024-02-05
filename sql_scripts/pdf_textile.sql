@@ -1,5 +1,6 @@
-CREATE TABLE [PDF_Textile] (
-  [TextileID] int,
-  [BoxID] bitint
+CREATE TABLE [dbo].[PDF_Textile] (
+    [TextileID] INT    NOT NULL,
+    [BoxID]     BIGINT NOT NULL,
+    CONSTRAINT [PK_PDF_Textile] PRIMARY KEY CLUSTERED ([BoxID] ASC, [TextileID] ASC)
 );
-CREATE INDEX [CPK] ON  [PDF_Textile] ([TextileID], [BoxID]);
+

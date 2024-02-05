@@ -1,10 +1,11 @@
-CREATE TABLE [Location] (
-  [Location] nvarchar(13),
-  [MetersNorthSouth] Smallint,
-  [NorthOrSouth] varchar(1),
-  [MetersEastWest] smallint,
-  [EastOrWest] varchar(1),
-  [Quadrant] nvarchar(2),
-  [Notes] nvarchar(200),
-  PRIMARY KEY ([Location])
+CREATE TABLE [dbo].[Location] (
+    [Location]         NVARCHAR (20)  NOT NULL,
+    [MetersNorthSouth] SMALLINT       NULL,
+    [NorthOrSouth]     VARCHAR (1)    NULL,
+    [MetersEastWest]   SMALLINT       NULL,
+    [EastOrWest]       VARCHAR (1)    NULL,
+    [Quadrant]         NVARCHAR (2)   NULL,
+    [Notes]            NVARCHAR (200) NULL,
+    CONSTRAINT [PK_Location] PRIMARY KEY CLUSTERED ([Location] ASC)
 );
+

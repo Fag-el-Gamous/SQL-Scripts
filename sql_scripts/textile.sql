@@ -1,14 +1,14 @@
-CREATE TABLE [Textile] (
-  [TextileID] int,
-  [BurialNumber] smallint FOREIGN KEY REFERENCES Burial(BurialNumber),
-  [ExcavationYear] smallint FOREIGN KEY REFERENCES Burial(ExcavationYear),
-  [Location] nvarchar(13) FOREIGN KEY REFERENCES Location(Location),
-  FOREIGN KEY ([Location]) REFERENCES Burial(Location),
-  [TextileReferenceNumber] varchar(6),
-  [AnalysisType] <type>,
-  [AnalysisDate] date,
-  [SampleTakenDate] date,
-  [Description] varchar(1000),
-  [AnalysisBy] varchar(20),
-  PRIMARY KEY ([TextileID])
+CREATE TABLE [dbo].[Textile] (
+    [TextileID]              INT            NOT NULL,
+    [BurialNumber]           SMALLINT       NULL,
+    [ExcavationYear]         SMALLINT       NULL,
+    [Location]               NVARCHAR (13)  NULL,
+    [TextileReferenceNumber] VARCHAR (6)    NULL,
+    [AnalysisType]           VARCHAR (20)   NULL,
+    [AnalysisDate]           DATE           NULL,
+    [SampleTakenDate]        DATE           NULL,
+    [Description]            VARCHAR (1000) NULL,
+    [AnalysisBy]             VARCHAR (20)   NULL,
+    CONSTRAINT [PK_Textile] PRIMARY KEY CLUSTERED ([TextileID] ASC)
 );
+

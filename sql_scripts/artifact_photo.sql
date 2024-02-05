@@ -1,7 +1,6 @@
-CREATE TABLE [Artifact_Photo] (
-  [ArtifactID] varchar(20),
-  [BoxID] bigint,
-  [IsCoverPhoto] bit
+CREATE TABLE [dbo].[Artifact_Photo] (
+    [ArtifactID]   VARCHAR (20) NOT NULL,
+    [BoxID]        BIGINT       NOT NULL,
+    [IsCoverPhoto] BIT          NULL,
+    CONSTRAINT [PK_Artifact_Photo] PRIMARY KEY CLUSTERED ([ArtifactID] ASC, [BoxID] ASC)
 );
-
-CREATE INDEX [CPK] ON  [Artifact_Photo] ([ArtifactID], [BoxID]);
