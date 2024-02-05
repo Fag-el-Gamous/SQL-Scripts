@@ -1,22 +1,21 @@
-CREATE TABLE [C14] (
-  [C14ID] int,
-  [Contents] varchar(50),
-  [LocationDescription] varchar(200),
-  [Rack] smallint,
-  [TubeNum] smallint,
-  [Sizeml] smallint,
-  [NumFoci] smallint,
-  [C14SampleNum2017] smallint,
-  [C14AgeBP] int,
-  [C14CalendarDate] int,
-  [CalendarDateMax95%] int,
-  [CalendarDateMin95%] int,
-  [Calibrated 95% Calendar Date SPAN] <type>,
-  [Calibrated 95% Calendar Date AVG] <type>,
-  [ResearchQuestions] varchar(500),
-  [ResearchQuestionNum] tinyint,
-  [Lab] varchar(100),
-  [Notes] varchar(1000)
+CREATE TABLE [dbo].[C14] (
+    [C14ID]                INT           NOT NULL,
+    [Contents]             VARCHAR (255) NULL,
+    [LocationDescription]  VARCHAR (255) NULL,
+    [Rack]                 INT           NULL,
+    [TubeNum]              INT           NULL,
+    [Sizeml]               FLOAT (53)    NULL,
+    [NumFoci]              INT           NULL,
+    [C14SampleNum2017]     INT           NULL,
+    [AgeBP]                FLOAT (53)    NULL,
+    [CalendarDate]         INT           NULL,
+    [CalendarDateMax95]    FLOAT (53)    NULL,
+    [CalendarDateMin95]    FLOAT (53)    NULL,
+    [ResearchQuestions]    TEXT          NULL,
+    [ResearchQuestionsNum] INT           NULL,
+    [Labs]                 VARCHAR (255) NULL,
+    [Notes]                VARCHAR (255) NULL,
+    [Other]                VARCHAR (255) NULL,
+    CONSTRAINT [PK_C14] PRIMARY KEY CLUSTERED ([C14ID] ASC)
 );
 
-CREATE INDEX [Key] ON  [C14] ([C14ID], [Contents]);

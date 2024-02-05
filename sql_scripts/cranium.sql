@@ -1,6 +1,6 @@
 CREATE TABLE [dbo].[Cranium] (
     [CraniaID]                  INT            NOT NULL,
-    [Location]                  NVARCHAR (20)  NULL,
+    [Location]                  VARCHAR (20)   NULL,
     [ExcavationYear]            SMALLINT       NULL,
     [BurialNumber]              SMALLINT       NULL,
     [MaxCraniaLength]           DECIMAL (5, 2) NULL,
@@ -21,6 +21,7 @@ CREATE TABLE [dbo].[Cranium] (
     [CalcBizygomaticDiameter]   DECIMAL (5, 2) NULL,
     [CalcNasionProsthionHeight] DECIMAL (5, 2) NULL,
     [CraniaCalcSum]             DECIMAL (5, 2) NULL,
-    PRIMARY KEY CLUSTERED ([CraniaID] ASC)
+    PRIMARY KEY CLUSTERED ([CraniaID] ASC),
+    CONSTRAINT [FK_Cranium_Burial] FOREIGN KEY ([Location], [ExcavationYear], [BurialNumber]) REFERENCES [dbo].[Burial] ([Location], [ExcavationYear], [BurialNumber])
 );
 

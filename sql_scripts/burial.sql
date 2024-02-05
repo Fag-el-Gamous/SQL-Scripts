@@ -1,14 +1,14 @@
 CREATE TABLE [dbo].[Burial] (
-    [Location]                           NVARCHAR (20)   NOT NULL,
+    [Location]                           VARCHAR (20)    NOT NULL,
     [ExcavationYear]                     SMALLINT        NOT NULL,
     [BurialNumber]                       SMALLINT        NOT NULL,
     [HillDesignation]                    VARCHAR (10)    NULL,
     [TombNumber]                         SMALLINT        NULL,
     [HeadDirection]                      VARCHAR (1)     NULL,
-    [WestToHead]                         DECIMAL(3,2)    NULL,
-    [WestToFeet]                         DECIMAL(3,2)    NULL,
-    [SouthToHead]                        DECIMAL(3,2)    NULL,
-    [SouthToFeet]                        DECIMAL(3,2)    NULL,
+    [WestToHead]                         DECIMAL (3, 2)  NULL,
+    [WestToFeet]                         DECIMAL (3, 2)  NULL,
+    [SouthToHead]                        DECIMAL (3, 2)  NULL,
+    [SouthToFeet]                        DECIMAL (3, 2)  NULL,
     [Depth]                              DECIMAL (4, 2)  NULL,
     [Length]                             DECIMAL (4, 2)  NULL,
     [ExcavationDay]                      TINYINT         NULL,
@@ -61,6 +61,7 @@ CREATE TABLE [dbo].[Burial] (
     [Osteophytosis]                      VARCHAR (300)   NULL,
     [CariesPeriodontalDisease]           VARCHAR (300)   NULL,
     [BodyAnalysisNotes]                  VARCHAR (2000)  NULL,
-    CONSTRAINT [PK_Burial] PRIMARY KEY CLUSTERED ([Location] ASC, [ExcavationYear] ASC, [BurialNumber] ASC)
+    CONSTRAINT [PK_Burial] PRIMARY KEY CLUSTERED ([Location] ASC, [ExcavationYear] ASC, [BurialNumber] ASC),
+    CONSTRAINT [FK_Burial_Location] FOREIGN KEY ([Location]) REFERENCES [dbo].[Location] ([Location])
 );
 

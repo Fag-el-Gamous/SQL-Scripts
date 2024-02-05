@@ -1,5 +1,5 @@
 CREATE TABLE [dbo].[Location] (
-    [Location]         NVARCHAR (20)  NOT NULL,
+    [Location]         VARCHAR (20)   NOT NULL,
     [MetersNorthSouth] SMALLINT       NULL,
     [NorthOrSouth]     VARCHAR (1)    NULL,
     [MetersEastWest]   SMALLINT       NULL,
@@ -8,4 +8,5 @@ CREATE TABLE [dbo].[Location] (
     [Notes]            NVARCHAR (200) NULL,
     CONSTRAINT [PK_Location] PRIMARY KEY CLUSTERED ([Location] ASC)
 );
+
 

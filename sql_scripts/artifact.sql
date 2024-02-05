@@ -1,6 +1,6 @@
 CREATE TABLE [dbo].[Artifact] (
     [ArtifactID]         VARCHAR (20)  NOT NULL,
-    [Location]           NVARCHAR (20) NULL,
+    [Location]           VARCHAR (20)  NULL,
     [Position]           VARCHAR (50)  NULL,
     [MetersNorthSouth]   SMALLINT      NULL,
     [NorthOrSouth]       VARCHAR (1)   NULL,
@@ -29,6 +29,10 @@ CREATE TABLE [dbo].[Artifact] (
     [ConservationNotes]  VARCHAR (500) NULL,
     [HasPhotos]          BIT           NULL,
     [Colors]             VARCHAR (50)  NULL,
-    CONSTRAINT [PK_Artifact] PRIMARY KEY CLUSTERED ([ArtifactID] ASC)
+    [PersonID]           INT           NULL,
+    CONSTRAINT [PK_Artifact] PRIMARY KEY CLUSTERED ([ArtifactID] ASC),
+    CONSTRAINT [FK_Artifact_Burial] FOREIGN KEY ([Location], [ExcavationYear], [BurialNumber]) REFERENCES [dbo].[Burial] ([Location], [ExcavationYear], [BurialNumber]),
+    CONSTRAINT [FK_Artifact_Location] FOREIGN KEY ([Location]) REFERENCES [dbo].[Location] ([Location]),
+    CONSTRAINT [FK_Artifact_Person] FOREIGN KEY ([PersonID]) REFERENCES [dbo].[Person] ([PersonID])
 );
 
