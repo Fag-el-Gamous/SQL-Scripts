@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[Crania] (
+CREATE TABLE [dbo].[Cranium] (
     [CraniaID]                  INT            NOT NULL,
     [Location]                  NVARCHAR (20)  NULL,
     [ExcavationYear]            SMALLINT       NULL,
