@@ -7,7 +7,7 @@ CREATE TABLE [dbo].[Textile] (
     [AnalysisType]           VARCHAR (20)   NULL,
     [AnalysisDate]           DATE           NULL,
     [SampleTakenDate]        DATE           NULL,
-    [Description]            VARCHAR (1000) NULL,
+    [Description]            VARCHAR (2000) NULL,
     [AnalysisBy]             VARCHAR (20)   NULL,
     CONSTRAINT [PK_Textile] PRIMARY KEY CLUSTERED ([TextileID] ASC),
     CONSTRAINT [FK_Textile_Burial] FOREIGN KEY ([Location], [ExcavationYear], [BurialNumber]) REFERENCES [dbo].[Burial] ([Location], [ExcavationYear], [BurialNumber]),
