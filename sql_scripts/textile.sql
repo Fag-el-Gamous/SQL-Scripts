@@ -1,6 +1,6 @@
 CREATE TABLE [dbo].[Textile] (
     [TextileID]              INT            NOT NULL,
-    [BurialNumber]           SMALLINT       NULL,
+    [BurialNumber]           VARCHAR(50)       NULL,
     [ExcavationYear]         SMALLINT       NULL,
     [Location]               VARCHAR (20)   NULL,
     [TextileReferenceNumber] VARCHAR (6)    NULL,

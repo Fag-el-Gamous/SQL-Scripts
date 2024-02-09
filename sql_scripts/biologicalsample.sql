@@ -4,7 +4,7 @@ CREATE TABLE [dbo].[BiologicalSample] (
     [BagNumber]           SMALLINT       NULL,
     [Location]            VARCHAR (20)   NULL,
     [ExcavationYear]      SMALLINT       NULL,
-    [BurialNumber]        SMALLINT       NULL,
+    [BurialNumber]        VARCHAR(50)       NULL,
     [BurialSampleNumber]  SMALLINT       NULL,
     [Date]                SMALLINT       NULL,
     [PreviouslySampled]   VARCHAR (50)   NULL,

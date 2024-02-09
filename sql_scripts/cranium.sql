@@ -2,7 +2,7 @@ CREATE TABLE [dbo].[Cranium] (
     [CraniaID]                  INT            NOT NULL,
     [Location]                  VARCHAR (20)   NULL,
     [ExcavationYear]            SMALLINT       NULL,
-    [BurialNumber]              SMALLINT       NULL,
+    [BurialNumber]              VARCHAR (50)       NULL,
     [MaxCraniaLength]           DECIMAL (5, 2) NULL,
     [MaxCraniaBreadth]          DECIMAL (5, 2) NULL,
     [BasionBregmaHeight]        DECIMAL (5, 2) NULL,

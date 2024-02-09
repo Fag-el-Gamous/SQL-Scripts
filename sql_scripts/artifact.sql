@@ -6,7 +6,7 @@ CREATE TABLE [dbo].[Artifact] (
     [NorthOrSouth]       VARCHAR (1)   NULL,
     [MetersEastWest]     SMALLINT      NULL,
     [EastOrWest]         VARCHAR (1)   NULL,
-    [BurialNumber]       SMALLINT      NULL,
+    [BurialNumber]       VARCHAR (50)  NULL,
     [ExcavationYear]     SMALLINT      NULL,
     [Title]              VARCHAR (100) NULL,
     [Description]        VARCHAR (MAX) NULL,

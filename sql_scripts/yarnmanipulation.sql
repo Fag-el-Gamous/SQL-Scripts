@@ -1,7 +1,6 @@
 CREATE TABLE [dbo].[YarnManipulation] (
     [TextileID]          INT          NOT NULL,
     [YarnManipulationID] INT          NOT NULL,
-    [BurialNumber]       SMALLINT     NULL,
     [Component]          VARCHAR (10) NULL,
     [Material]           VARCHAR (7)  NULL,
     [Manipulation]       VARCHAR (20) NULL,

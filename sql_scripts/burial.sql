@@ -1,7 +1,7 @@
 CREATE TABLE [dbo].[Burial] (
     [Location]                           VARCHAR (20)    NOT NULL,
     [ExcavationYear]                     SMALLINT        NOT NULL,
-    [BurialNumber]                       SMALLINT        NOT NULL,
+    [BurialNumber]                       VARCHAR(50)        NOT NULL,
     [HillDesignation]                    VARCHAR (10)    NULL,
     [TombNumber]                         SMALLINT        NULL,
     [HeadDirection]                      VARCHAR (1)     NULL,
