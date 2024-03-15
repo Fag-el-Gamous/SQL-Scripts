@@ -1,9 +1,7 @@
 DROP DATABASE [byu-egypt-db]
 
 /****** Object:  Database [byu-egypt-db]    Script Date: 3/6/2024 3:01:16 PM ******/
-CREATE DATABASE [byu-egypt-db]  (EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_2', MAXSIZE = 32 GB) WITH CATALOG_COLLATION = SQL_Latin1_General_CP1_CI_AS, LEDGER = OFF;
-GO
-
+CREATE DATABASE [byu-egypt-db]  
 
 ALTER DATABASE [byu-egypt-db] SET COMPATIBILITY_LEVEL = 150
 GO
@@ -110,8 +108,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[ArtifactPhoto](
 	[ArtifactID] [varchar](20) NOT NULL,
-	[ArtifactPhotoFilePath] [varchar] (450) NOT NULL,
-	[ArtifactPhotoFileName] [varchar] (450) NOT NULL,
+	[ArtifactPhotoFilePath] [varchar] (400) NOT NULL,
+	[ArtifactPhotoFileName] [varchar] (400) NOT NULL,
 	[IsCoverPhoto] [bit] NULL,
  CONSTRAINT [PK_ArtifactPhoto] PRIMARY KEY CLUSTERED 
 (
@@ -179,16 +177,16 @@ CREATE TABLE [dbo].[Burial](
 	[BurialNotes] [nvarchar](2000) NULL,
 	[BodyExaminationDate] [date] NULL,
 	[BodyPreservationIndex] [tinyint] NULL,
-	[RobustCrania] [nvarchar](10) NULL,
-	[SupraorbitalRidgesCrania] [nvarchar](10) NULL,
-	[OrbitEdgeCrania] [nvarchar](10) NULL,
-	[ParietalBossingCrania] [nvarchar](10) NULL,
-	[GonionCrania] [nvarchar](10) NULL,
-	[NuchalCrestCrania] [nvarchar](10) NULL,
-	[ZygomaticCrestCrania] [nvarchar](10) NULL,
-	[SphenoOccipitalSynchondrosisCrania] [nvarchar](10) NULL,
-	[LamboidSutureCrania] [nvarchar](10) NULL,
-	[SquamousSutureCrania] [nvarchar](10) NULL,
+	[RobustCranium] [nvarchar](10) NULL,
+	[SupraorbitalRidgesCranium] [nvarchar](10) NULL,
+	[OrbitEdgeCranium] [nvarchar](10) NULL,
+	[ParietalBossingCranium] [nvarchar](10) NULL,
+	[GonionCranium] [nvarchar](10) NULL,
+	[NuchalCrestCranium] [nvarchar](10) NULL,
+	[ZygomaticCrestCranium] [nvarchar](10) NULL,
+	[SphenoOccipitalSynchondrosisCranium] [nvarchar](10) NULL,
+	[LamboidSutureCranium] [nvarchar](10) NULL,
+	[SquamousSutureCranium] [nvarchar](10) NULL,
 	[ToothAttrition] [varchar](10) NULL,
 	[ToothEruptionDescription] [nvarchar](200) NULL,
 	[ToothEruptionAgeEstimate] [nvarchar](100) NULL,
@@ -211,6 +209,8 @@ CREATE TABLE [dbo].[Burial](
 	[Osteophytosis] [varchar](300) NULL,
 	[CariesPeriodontalDisease] [varchar](300) NULL,
 	[BodyAnalysisNotes] [varchar](2000) NULL,
+	[ClusterNumber] [int] NULL,
+	[ShaftNumber] [int] NULL
  CONSTRAINT [PK_Burial] PRIMARY KEY CLUSTERED 
 (
 	[Location] ASC,
@@ -251,8 +251,8 @@ CREATE TABLE [dbo].[BodyAnalysisSheet](
 	[Location] [varchar](20) NOT NULL,
 	[ExcavationYear] [smallint] NOT NULL,
 	[BurialNumber] [varchar](50) NOT NULL,
-	[BodyAnalysisSheetFilePath] [varchar] (450) NOT NULL,
-	[BodyAnalysisSheetFileName] [varchar] (450) NOT NULL,
+	[BodyAnalysisSheetFilePath] [varchar] (400) NOT NULL,
+	[BodyAnalysisSheetFileName] [varchar] (400) NOT NULL,
  CONSTRAINT [PK_BodyAnalysisSheet] PRIMARY KEY CLUSTERED 
 (
 	[BodyAnalysisSheetFilePath] ASC,
@@ -267,19 +267,37 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[BurialPhoto](
-	[BurialPhotoFilePath] [varchar] (400) NOT NULL,
-	[BurialPhotoFileName] [varchar] (400) NOT NULL,
 	[Location] [varchar](20) NOT NULL,
 	[ExcavationYear] [smallint] NOT NULL,
 	[BurialNumber] [varchar](50) NOT NULL,
+	[BurialPhotoFilePath] [varchar] (400) NOT NULL,
+	[BurialPhotoFileName] [varchar] (400) NOT NULL,
 	[IsCoverPhoto] [bit] NULL,
  CONSTRAINT [PK_BurialPhoto] PRIMARY KEY CLUSTERED 
 (
 	[BurialPhotoFilePath] ASC,
-	[BurialPhotoFileName] ASC,
-    [Location] [varchar] ASC,
-	[ExcavationYear] ASC,
-	[BurialNumber] ASC 
+	[BurialPhotoFileName] ASC
+
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [dbo].[BodyAnalysis]    Script Date: 3/6/2024 3:01:16 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BodyAnalysis](
+	[Location] [varchar](20) NOT NULL,
+	[ExcavationYear] [smallint] NOT NULL,
+	[BurialNumber] [varchar](50) NOT NULL,
+	[BodyAnalysisFilePath] [varchar] (400) NOT NULL,
+	[BodyAnalysisFileName] [varchar] (400) NOT NULL,
+	[IsCoverPhoto] [bit] NULL,
+ CONSTRAINT [PK_BodyAnalysis] PRIMARY KEY CLUSTERED 
+(
+	[BodyAnalysisFilePath] ASC,
+	[BodyAnalysisFileName] ASC
 
 )WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
@@ -319,12 +337,12 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Cranium](
-	[CraniaID] [int] NOT NULL,
+	[CraniumID] [int] NOT NULL,
 	[Location] [varchar](20) NULL,
 	[ExcavationYear] [smallint] NULL,
 	[BurialNumber] [varchar](50) NULL,
-	[MaxCraniaLength] [decimal](5, 2) NULL,
-	[MaxCraniaBreadth] [decimal](5, 2) NULL,
+	[MaxCraniumLength] [decimal](5, 2) NULL,
+	[MaxCraniumBreadth] [decimal](5, 2) NULL,
 	[BasionBregmaHeight] [decimal](5, 2) NULL,
 	[BasionNasionLength] [decimal](5, 2) NULL,
 	[BasionProsthionLength] [decimal](5, 2) NULL,
@@ -335,15 +353,15 @@ CREATE TABLE [dbo].[Cranium](
 	[Sex] [varchar](1) NULL,
 	[CalculatedSex] [varchar](1) NULL,
 	[SexMatch] [bit] NULL,
-	[CalcMaxCraniaLength] [decimal](5, 2) NULL,
+	[CalcMaxCraniumLength] [decimal](5, 2) NULL,
 	[CalcBasionNasion] [decimal](5, 2) NULL,
 	[CalcBasionProsthion] [decimal](5, 2) NULL,
 	[CalcBizygomaticDiameter] [decimal](5, 2) NULL,
 	[CalcNasionProsthionHeight] [decimal](5, 2) NULL,
-	[CraniaCalcSum] [decimal](5, 2) NULL,
+	[CraniumCalcSum] [decimal](5, 2) NULL,
 PRIMARY KEY CLUSTERED 
 (
-	[CraniaID] ASC
+	[CraniumID] ASC
 )WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -353,14 +371,32 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[CraniumPhoto](
-	[CraniaID] [int] NOT NULL,
-	[CraniumPhotoFilePath] [varchar] (450) NOT NULL,
-	[CraniumPhotoFileName] [varchar] (450) NOT NULL,
+	[CraniumID] [int] NOT NULL,
+	[CraniumPhotoFilePath] [varchar] (400) NOT NULL,
+	[CraniumPhotoFileName] [varchar] (400) NOT NULL,
 	[IsCoverPhoto] [bit] NULL,
  CONSTRAINT [PK_CraniumPhoto] PRIMARY KEY CLUSTERED 
 (
 	[CraniumPhotoFilePath] ASC,
 	[CraniumPhotoFileName] ASC
+
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [dbo].[CraniumAnalysisSheet]    ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CraniumAnalysisSheet](
+	[CraniumID] [int] NOT NULL,
+	[CraniumAnalysisSheetFilePath] [varchar] (400) NOT NULL,
+	[CraniumAnalysisSheetFileName] [varchar] (400) NOT NULL
+ CONSTRAINT [PK_CraniumAnalysisSheet] PRIMARY KEY CLUSTERED 
+(
+	[CraniumAnalysisSheetFilePath] ASC,
+	[CraniumAnalysisSheetFileName] ASC
 
 )WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
@@ -390,8 +426,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[FieldBook](
     [FieldBookID] [int] NOT NULL,
-	[FieldBookFilePath] [varchar] (450) NOT NULL,
-	[FieldBookFileName] [varchar] (450) NOT NULL,
+	[FieldBookFilePath] [varchar] (400) NOT NULL,
+	[FieldBookFileName] [varchar] (400) NOT NULL,
 	[YearName] [varchar](5) NULL,
 	[Notes] [varchar](max) NULL,
  CONSTRAINT [PK_FieldBook] PRIMARY KEY CLUSTERED 
@@ -455,8 +491,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[TextileAnalysisSheet](
 	[TextileID] [int] NOT NULL,
-	[TextileAnalysisSheetFilePath] [varchar] (450) NOT NULL,
-	[TextileAnalysisSheetFileName] [varchar] (450) NOT NULL,
+	[TextileAnalysisSheetFilePath] [varchar] (400) NOT NULL,
+	[TextileAnalysisSheetFileName] [varchar] (400) NOT NULL,
 
  CONSTRAINT [PK_TextileAnalysisSheet] PRIMARY KEY CLUSTERED 
 (
@@ -521,9 +557,9 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[TextilePhoto](
-	[TextilePhotoFilePath] [varchar] (450) NOT NULL,
-	[TextilePhotoFileName] [varchar] (450) NOT NULL,
 	[TextileID] [int] NOT NULL,
+	[TextilePhotoFilePath] [varchar] (400) NOT NULL,
+	[TextilePhotoFileName] [varchar] (400) NOT NULL,
 	[IsCoverPhoto] [bit] NULL,
  CONSTRAINT [PK_TextilePhoto] PRIMARY KEY CLUSTERED 
 (
@@ -779,6 +815,31 @@ CREATE TABLE [dbo].[YarnManipulation](
 ) ON [PRIMARY]
 GO
 
+/****** Object:  Table [dbo].[Publication]   ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Publication](
+	[PublicationID] [int] NOT NULL,
+	[PublicationTitle] [varchar] (max) NULL,
+	[Author] [varchar](max) NULL,
+	[Description] [varchar](max) NULL,
+	[PublicationDate] [date] NULL,
+	[PublicationType] [varchar](20) NULL,
+	[OnlineLink] [varchar](max) NULL,
+	[IsFree] [varchar](10) NULL,
+	[Topic] [varchar](100) NULL,
+	[PublicationFilePath] [varchar](400) NULL,
+	[PublicationFileName] [varchar] (400) NULL,
+
+ CONSTRAINT [PK_PublicationID] PRIMARY KEY CLUSTERED 
+(
+	[PublicationID] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+-- Publication doesn't have any Foreign Keys 
 use [byu-egypt-db]
 
 ALTER TABLE [dbo].[Artifact]  WITH NOCHECK ADD  CONSTRAINT [FK_Artifact_Burial] FOREIGN KEY([Location], [ExcavationYear], [BurialNumber])
@@ -836,6 +897,13 @@ REFERENCES [dbo].[Burial] ([Location], [ExcavationYear], [BurialNumber])
 GO
 ALTER TABLE [dbo].[BurialPhoto] CHECK CONSTRAINT [FK_BurialPhoto_Burial]
 GO
+
+ALTER TABLE [dbo].[BodyAnalysis]  WITH CHECK ADD  CONSTRAINT [FK_BodyAnalysis_Burial] FOREIGN KEY([Location], [ExcavationYear], [BurialNumber])
+REFERENCES [dbo].[Burial] ([Location], [ExcavationYear], [BurialNumber])
+GO
+ALTER TABLE [dbo].[BodyAnalysis] CHECK CONSTRAINT [FK_BodyAnalysis_Burial]
+GO
+
 ALTER TABLE [dbo].[C14]  WITH NOCHECK ADD  CONSTRAINT [FK_C14_BioSample] FOREIGN KEY([BiologicalSampleID])
 REFERENCES [dbo].[BiologicalSample] ([BiologicalSampleID ])
 GO
@@ -846,8 +914,8 @@ REFERENCES [dbo].[Burial] ([Location], [ExcavationYear], [BurialNumber])
 GO
 ALTER TABLE [dbo].[Cranium] CHECK CONSTRAINT [FK_Cranium_Burial]
 GO
-ALTER TABLE [dbo].[CraniumPhoto]  WITH CHECK ADD  CONSTRAINT [FK_CraniumPhoto_Cranium] FOREIGN KEY([CraniaID])
-REFERENCES [dbo].[Cranium] ([CraniaID])
+ALTER TABLE [dbo].[CraniumPhoto]  WITH CHECK ADD  CONSTRAINT [FK_CraniumPhoto_Cranium] FOREIGN KEY([CraniumID])
+REFERENCES [dbo].[Cranium] ([CraniumID])
 GO
 ALTER TABLE [dbo].[CraniumPhoto] CHECK CONSTRAINT [FK_CraniumPhoto_Cranium]
 GO
